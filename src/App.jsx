@@ -1,6 +1,11 @@
 
 function App() {
  // Código JavaScript
+ const list = [
+  {id : 4455, task: "Levar Fofin dar peao"},
+  {id : 78975, task: "Comprar pao"}, 
+  {id : 6994, task: "Comer um cadim"}
+]
 
  function inputChange(event){ // o event
   console.log(event.target.value)
@@ -10,8 +15,6 @@ function App() {
   console.log("Click bottom")
  }
 
- 
- 
  // Retorna Código HTML 
   return (
     // Fragment <></>
@@ -21,9 +24,11 @@ function App() {
         <button onClick={clickButton} >Adicionar</button>
 
         <ul>
-          <li>Levar Fofin dar peao</li>
-          <li>Comprar pao</li>
-          <li>Aulinhas DevClub</li>
+          {
+            list.map(item => (    // isso eh muito usado no REACT // quando usa o ()  --> nao precisa usar o RETURN
+            <li key={item.id} >{item.task}</li>     // toda vez que usa um map, precisa de uma key
+            )) 
+          }
         </ul>
       </div>
       
