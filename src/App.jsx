@@ -1,14 +1,20 @@
 
+import React, { useState } from 'react'
+import { v4 as uuid } from 'uuid' // ele eh uma funcao, soh de chamar ele, ja cria um Id aleatorio
+
 function App() {
  // Código JavaScript
- const list = [
-  {id : 4455, task: "Levar Fofin dar peao"},
-  {id : 78975, task: "Comprar pao"}, 
-  {id : 6994, task: "Comer um cadim"}
-]
+  // quando altera um valor na list, ele nao altera na tela --> eh necessario usar o useState()
+  // list => valor da lista // setList -> ele vai alterar o valor da list // useState(0) -> posicao inicial, apartir daqui que comeca a contar
+  // toda vez que eu quero alterar o list , PRECISO utilizar o setList
+  const [list, setList] = useState([{ id: uuid() , task: 'nothing'}]) 
 
  function inputChange(event){ // o event
   console.log(event.target.value)
+
+  setList([{id : uuid(), task: event.target.value}])
+
+  console.log(list)
  }
 
  function clickButton(){
