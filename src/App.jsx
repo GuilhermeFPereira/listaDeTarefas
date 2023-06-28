@@ -1,25 +1,24 @@
 
-import React, { useState } from 'react'
+import React, { useState } from 'react' // funcao de criar uma variavel que vai ser mostrado na tela, toda vez que eu altere essa variavel, ela fica visivel na tela
 import { v4 as uuid } from 'uuid' // ele eh uma funcao, soh de chamar ele, ja cria um Id aleatorio
 
 function App() {
  // Código JavaScript
   // quando altera um valor na list, ele nao altera na tela --> eh necessario usar o useState()
-  // list => valor da lista // setList -> ele vai alterar o valor da list // useState(0) -> posicao inicial, apartir daqui que comeca a contar
+  // list => valor da lista (variavel)[posicao 0] // setList -> ele vai criar um novo valor pra list e substitui (ferramenta p/ alterar valor da variavel)[posicao 1] // useState(0) -> posicao inicial, apartir daqui que comeca a contar
   // toda vez que eu quero alterar o list , PRECISO utilizar o setList
   const [list, setList] = useState([{ id: uuid() , task: 'nothing'}]) 
+  const [inputTask, setInputTask] = useState('') 
 
  function inputChange(event){ // o event
-  console.log(event.target.value)
 
-  setList([{id : uuid(), task: event.target.value}])
+  setInputTask(event.target.value)
 
-  console.log(list)
  }
 
  function clickButton(){
-  console.log("Click bottom")
- }
+  setList([...list, { id: uuid(), task : inputTask}]) // os ... --> serve para que os novos items do array sejam ADICIONADOS ao lado, ao invez de substituir ou dar bugs
+ } //(...) ele coloca o item anterior + o novo item
 
  // Retorna Código HTML 
   return (
