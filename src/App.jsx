@@ -2,6 +2,8 @@
 import React, { useState } from 'react' // funcao de criar uma variavel que vai ser mostrado na tela, toda vez que eu altere essa variavel, ela fica visivel na tela
 import { v4 as uuid } from 'uuid' // ele eh uma funcao, soh de chamar ele, ja cria um Id aleatorio
 
+import { Container } from './styles.js'
+
 function App() {
  // Código JavaScript
   // quando altera um valor na list, ele nao altera na tela --> eh necessario usar o useState()
@@ -24,7 +26,7 @@ function App() {
   return (
     // Fragment <></>
     <>
-      <div>
+      <Container>
         <input onChange={inputChange} placeholder="O que tem para fazer HJ ?"/>
         <button onClick={clickButton} >Adicionar</button>
 
@@ -35,7 +37,7 @@ function App() {
             )) 
           }
         </ul>
-      </div>
+      </Container>
       
     </>
   )
