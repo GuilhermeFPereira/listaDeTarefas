@@ -25,6 +25,16 @@ function App() {
     setList([...list, { id: uuid(), task: inputTask, finished: false }]) // os ... --> serve para que os novos items do array sejam ADICIONADOS ao lado, ao invez de substituir ou dar bugs
   } //(...) ele coloca o item anterior + o novo item
 
+  function finalizarTarefa(id){
+    
+    const newList = list.map( item => (
+      item.id === id ? { ... item, finished: !item.finished } : item
+    ))
+
+    setList(newList)
+
+  }
+
   // Retorna Código HTML 
   return (
     // Fragment <></>
@@ -37,11 +47,11 @@ function App() {
           <ul>
             {list.map((item) => (    // isso eh muito usado no REACT // quando usa o ()  --> nao precisa usar o RETURN
             <ListItem key={item.id} isFinished={item.finished} >  
-             <FcOk />
-             <li key={item.id}>{item.task}</li>     
+             <FcOk onClick={() => finalizarTarefa(item.id)} /*Qando escolho manualmente oq quero enviar , precisa fazer essa arrowFunction */ />
+             <li >{item.task}</li>     
              <FcEmptyTrash />
             </ListItem>
-              )) // toda vez que usa um map, precisa de uma key
+              )) // toda vez que usa um map, precisa de uma key, e ela sempre vai no pai
             }
           </ul>
         </ToDoList>
