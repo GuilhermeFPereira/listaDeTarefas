@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+import { FcEmptyTrash, FcOk } from "react-icons/fc";
+
+
 export const Container = styled.div`
     background: linear-gradient(90deg, #383838 0%, #000000 81.25%);
     width: 100vw;
@@ -41,6 +44,13 @@ export const Button = styled.button`
     line-height: 2px;
     height: 40px;
     width: 130px;
+
+    &:hover{
+        opacity: 0.7;
+    }
+    &:active{
+        opacity: 0.4;
+    }
 `
 
 export const ListItem = styled.div` // props --> propriedade, foi criado la no HTML app.jsx
@@ -59,4 +69,20 @@ export const ListItem = styled.div` // props --> propriedade, foi criado la no H
     li{
         list-style: none;
     }
+`
+
+export const Trash = styled(FcEmptyTrash)`
+    cursor: pointer;
+`
+
+export const Check = styled(FcOk)`
+    cursor: pointer;
+`
+
+export const TextStyled = styled.h3`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8052ec;
+    font-weight: 900;
 `
