@@ -6,6 +6,9 @@ import { createGlobalStyle } from 'styled-components'
         box-sizing: border-box;
         outline: none;
     }
+    *{
+        font-family: 'Roboto', sans-serif;
+    }
 `
 
 export default GlobalStyles
