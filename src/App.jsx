@@ -35,6 +35,12 @@ function App() {
 
   }
 
+  function deleteItem(itemId){
+    const newItem = list.filter( item => item.id !== itemId ) // ele so vai adcionar ao novo array, os items que nao encontrar no id que estou procurando, pq estou pedindo pra colocar os itens diferentes do id que estou mandando
+    setList(newItem)
+
+  }
+
   // Retorna Código HTML 
   return (
     // Fragment <></>
@@ -49,7 +55,7 @@ function App() {
             <ListItem key={item.id} isFinished={item.finished} >  
              <FcOk onClick={() => finalizarTarefa(item.id)} /*Qando escolho manualmente oq quero enviar , precisa fazer essa arrowFunction */ />
              <li >{item.task}</li>     
-             <FcEmptyTrash />
+             <FcEmptyTrash onClick={() => deleteItem(item.id)} />
             </ListItem>
               )) // toda vez que usa um map, precisa de uma key, e ela sempre vai no pai
             }
