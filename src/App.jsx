@@ -12,7 +12,7 @@ function App() {
   // quando altera um valor na list, ele nao altera na tela --> eh necessario usar o useState()
   // list => valor da lista (variavel)[posicao 0] // setList -> ele vai criar um novo valor pra list e substitui (ferramenta p/ alterar valor da variavel)[posicao 1] // useState(0) -> posicao inicial, apartir daqui que comeca a contar
   // toda vez que eu quero alterar o list , PRECISO utilizar o setList
-  const [list, setList] = useState([{ id: uuid(), task: 'nothing' }])
+  const [list, setList] = useState([{ id: uuid(), task: 'nothing', finished: true }])
   const [inputTask, setInputTask] = useState('')
 
   function inputChange(event) { // o event
@@ -22,7 +22,7 @@ function App() {
   }
 
   function clickButton() {
-    setList([...list, { id: uuid(), task: inputTask }]) // os ... --> serve para que os novos items do array sejam ADICIONADOS ao lado, ao invez de substituir ou dar bugs
+    setList([...list, { id: uuid(), task: inputTask, finished: false }]) // os ... --> serve para que os novos items do array sejam ADICIONADOS ao lado, ao invez de substituir ou dar bugs
   } //(...) ele coloca o item anterior + o novo item
 
   // Retorna Código HTML 
@@ -36,7 +36,7 @@ function App() {
 
           <ul>
             {list.map((item) => (    // isso eh muito usado no REACT // quando usa o ()  --> nao precisa usar o RETURN
-            <ListItem key={item.id} >  
+            <ListItem key={item.id} isFinished={item.finished} >  
              <FcOk />
              <li key={item.id}>{item.task}</li>     
              <FcEmptyTrash />

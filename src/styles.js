@@ -43,8 +43,8 @@ export const Button = styled.button`
     width: 130px;
 `
 
-export const ListItem = styled.div`
-    background: #e4e4e4;
+export const ListItem = styled.div` // props --> propriedade, foi criado la no HTML app.jsx
+    background: ${props => props.isFinished ? "#E8FF8B" : "#e4e4e4" }; // props, pega todos os itens que estao vindo la do ListItem, ai pequei props (todos itens) porem especifico Finished , o ? significa if, se a info for verdadeira fica verde , caso nao fica cinza
     box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     height: 60px;
